@@ -1,50 +1,50 @@
-// DONE create button on page
-// DONE assign numbers to each button
-// DONE assign operator to math buttons
-// DONE add math for / * + -
-// DONE display result
-// DONE clear result
-
 import React, { useState } from 'react'
 
-const HomePage = () => {
-  const [userInput, setUserInput] = useState('')
-  const [setOperand, setSetOperand] = useState('')
-  // const [firstNumber, setFirstNumber] = useState('');
+const Calculator = () => {
+  const [display, setDisplay] = useState('')
+  const [operand, setOperand] = useState('')
+  const [firstNumber, setFirstNumber] = useState(0)
 
   const clickNumberButton = digit => {
-    setUserInput(prevValue => {
+    setDisplay(prevValue => {
       return prevValue + digit.toString()
     })
   }
 
   const operandButtonPressed = op => {
     setOperand(op)
-    // setFirstNumber(display)
-    // setDisplay('')
+    setFirstNumber(display)
+    setDisplay('')
   }
 
   const calculateResult = () => {
-    if (userInput[1] === '+') {
-      setUserInput(parseInt(userInput[0]) + parseInt(userInput[2]))
-    } else if (userInput[1] === '-') {
-      setUserInput(parseInt(userInput[0]) - parseInt(userInput[2]))
-    } else if (userInput[1] === '*') {
-      setUserInput(parseInt(userInput[0]) * parseInt(userInput[2]))
-    } else if (userInput[1] === '/') {
-      setUserInput(parseInt(userInput[0]) / parseInt(userInput[2]))
+    let total = 0
+    switch (operand) {
+      case '+':
+        total = parseInt(firstNumber) + parseInt(display)
+        break
+      case '-':
+        total = parseInt(firstNumber) - parseInt(display)
+        break
+      case '*':
+        total = parseInt(firstNumber) * parseInt(display)
+        break
+      case '/':
+        total = parseInt(firstNumber) / parseInt(display)
+        break
     }
+    setDisplay(total)
   }
 
   const clear = () => {
-    setUserInput([])
+    setDisplay('')
   }
 
   return (
     <>
       <div>
         <section className="input">
-          <h1>{userInput}</h1>
+          <h1>{display}</h1>
         </section>
         <section>
           <button className="gray">💜</button>
@@ -65,7 +65,7 @@ const HomePage = () => {
             9
           </button>
           <button className="orange" onClick={() => operandButtonPressed('*')}>
-            *
+            x
           </button>
         </section>
         <section>
@@ -114,4 +114,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default Calculator
