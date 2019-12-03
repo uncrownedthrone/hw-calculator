@@ -44,7 +44,7 @@ const HomePage = () => {
     <>
       <div>
         <section className="input">
-          <h1>{userInput}</h1>
+          <h1 className="input">{userInput}</h1>
         </section>
         <section>
           <button className="gray">💜</button>

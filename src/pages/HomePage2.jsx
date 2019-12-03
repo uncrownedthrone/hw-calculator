@@ -4,8 +4,9 @@ const Calculator = () => {
   const [display, setDisplay] = useState('')
   const [operand, setOperand] = useState('')
   const [firstNumber, setFirstNumber] = useState(0)
+  const [runningTotal, setRunningTotal] = useState(0)
 
-  const clickNumberButton = digit => {
+  const numberButtonPressed = digit => {
     setDisplay(prevValue => {
       return prevValue + digit.toString()
     })
@@ -15,6 +16,7 @@ const Calculator = () => {
     setOperand(op)
     setFirstNumber(display)
     setDisplay('')
+    calculateResult()
   }
 
   const calculateResult = () => {
@@ -34,34 +36,37 @@ const Calculator = () => {
         break
     }
     setDisplay(total)
+    setRunningTotal(total)
   }
 
   const clear = () => {
+    setOperand('')
+    setFirstNumber(0)
     setDisplay('')
   }
 
   return (
     <>
       <div>
-        <section className="input">
-          <h1>{display}</h1>
+        <section>
+          <p className="output">{display}</p>
         </section>
         <section>
-          <button className="gray">💜</button>
-          <button className="gray">+/-</button>
-          <button className="gray">%</button>
+          <button className="gray" disabled="true"></button>
+          <button className="gray" disabled="true"></button>
+          <button className="gray" disabled="true"></button>
           <button className="orange" onClick={() => operandButtonPressed('/')}>
             ÷
           </button>
         </section>
         <section>
-          <button className="darkgray" onClick={() => clickNumberButton(7)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(7)}>
             7
           </button>
-          <button className="darkgray" onClick={() => clickNumberButton(8)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(8)}>
             8
           </button>
-          <button className="darkgray" onClick={() => clickNumberButton(9)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(9)}>
             9
           </button>
           <button className="orange" onClick={() => operandButtonPressed('*')}>
@@ -69,13 +74,13 @@ const Calculator = () => {
           </button>
         </section>
         <section>
-          <button className="darkgray" onClick={() => clickNumberButton(6)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(6)}>
             6
           </button>
-          <button className="darkgray" onClick={() => clickNumberButton(5)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(5)}>
             5
           </button>
-          <button className="darkgray" onClick={() => clickNumberButton(4)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(4)}>
             4
           </button>
           <button className="orange" onClick={() => operandButtonPressed('+')}>
@@ -83,13 +88,13 @@ const Calculator = () => {
           </button>
         </section>
         <section>
-          <button className="darkgray" onClick={() => clickNumberButton(3)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(3)}>
             3
           </button>
-          <button className="darkgray" onClick={() => clickNumberButton(2)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(2)}>
             2
           </button>
-          <button className="darkgray" onClick={() => clickNumberButton(1)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(1)}>
             1
           </button>
           <button className="orange" onClick={() => operandButtonPressed('-')}>
@@ -97,7 +102,7 @@ const Calculator = () => {
           </button>
         </section>
         <section>
-          <button className="darkgray" onClick={() => clickNumberButton(0)}>
+          <button className="darkgray" onClick={() => numberButtonPressed(0)}>
             0
           </button>
           <button className="darkgray">.</button>
@@ -108,7 +113,6 @@ const Calculator = () => {
             =
           </button>
         </section>
-        <footer>Made with 💜 at SDG</footer>
       </div>
     </>
   )
