@@ -1,5 +1,6 @@
 :root {
   font: 16px / 1 sans-serif;
+  font-family: 'Alata', sans-serif;
 }
 
 html {
@@ -9,6 +10,8 @@ html {
 body {
   margin: 0;
   min-height: 100%;
+  background-color: black;
+  font-family: 'Alata', sans-serif;
 }
 
 section {
@@ -20,13 +23,48 @@ section {
 }
 
 button {
+  border: none;
   width: 4rem;
+  margin: 0.25rem;
+  height: 4rem;
   font-size: 2rem;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: rgb(93, 92, 93);
+  transform: translateY(4px);
 }
 
 input {
   height: 2rem;
   width: auto;
   font-size: 2rem;
+  text-align: right;
+}
+
+.orange {
+  background-color: rgb(259, 155, 11);
+}
+
+.input {
+  color: white;
+  margin: 1rem;
+}
+
+.gray {
+  color: black;
+  background-color: rgb(93, 92, 93);
+}
+
+.darkgray {
+  background-color: rgb(61, 60, 61);
+}
+
+footer {
+  color: white;
   text-align: center;
+  margin-top: 1rem;
 }

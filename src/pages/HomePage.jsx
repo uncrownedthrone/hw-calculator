@@ -13,7 +13,6 @@ const HomePage = () => {
     setUserInput(prev => {
       return prev + input
     })
-    console.log('clicked button' + { input })
   }
 
   const calculate = () => {
@@ -35,39 +34,72 @@ const HomePage = () => {
   return (
     <>
       <div>
-        <section>
+        <section className="input">
           <h1>{userInput}</h1>
         </section>
         <section>
-          <button>💜</button>
-          <button>+/-</button>
-          <button>%</button>
-          <button onClick={() => clickButton('/')}>÷</button>
+          <button className="gray">💜</button>
+          <button className="gray">+/-</button>
+          <button className="gray">%</button>
+          <button className="orange" onClick={() => clickButton('/')}>
+            ÷
+          </button>
         </section>
         <section>
-          <button onClick={() => clickButton(7)}>7</button>
-          <button onClick={() => clickButton(8)}>8</button>
-          <button onClick={() => clickButton(9)}>9</button>
-          <button onClick={() => clickButton('*')}>*</button>
+          <button className="darkgray" onClick={() => clickButton(7)}>
+            7
+          </button>
+          <button className="darkgray" onClick={() => clickButton(8)}>
+            8
+          </button>
+          <button className="darkgray" onClick={() => clickButton(9)}>
+            9
+          </button>
+          <button className="orange" onClick={() => clickButton('*')}>
+            *
+          </button>
         </section>
         <section>
-          <button onClick={() => clickButton(6)}>6</button>
-          <button onClick={() => clickButton(5)}>5</button>
-          <button onClick={() => clickButton(4)}>4</button>
-          <button onClick={() => clickButton('+')}>+</button>
+          <button className="darkgray" onClick={() => clickButton(6)}>
+            6
+          </button>
+          <button className="darkgray" onClick={() => clickButton(5)}>
+            5
+          </button>
+          <button className="darkgray" onClick={() => clickButton(4)}>
+            4
+          </button>
+          <button className="orange" onClick={() => clickButton('+')}>
+            +
+          </button>
         </section>
         <section>
-          <button onClick={() => clickButton(3)}>3</button>
-          <button onClick={() => clickButton(2)}>2</button>
-          <button onClick={() => clickButton(1)}>1</button>
-          <button onClick={() => clickButton('-')}>-</button>
+          <button className="darkgray" onClick={() => clickButton(3)}>
+            3
+          </button>
+          <button className="darkgray" onClick={() => clickButton(2)}>
+            2
+          </button>
+          <button className="darkgray" onClick={() => clickButton(1)}>
+            1
+          </button>
+          <button className="orange" onClick={() => clickButton('-')}>
+            -
+          </button>
         </section>
         <section>
-          <button onClick={() => clickButton(0)}>0</button>
-          <button>.</button>
-          <button onClick={() => clear()}>AC</button>
-          <button onClick={() => calculate()}>=</button>
+          <button className="darkgray" onClick={() => clickButton(0)}>
+            0
+          </button>
+          <button className="darkgray">.</button>
+          <button className="darkgray" onClick={() => clear()}>
+            AC
+          </button>
+          <button className="orange" onClick={() => calculate()}>
+            =
+          </button>
         </section>
+        <footer>Made with 💜 at SDG</footer>
       </div>
     </>
   )
