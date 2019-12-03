@@ -32,10 +32,6 @@ button {
   cursor: pointer;
 }
 
-.orange {
-  background-color: rgb(259, 155, 11);
-}
-
 .output {
   font-size: 2rem;
   display: flex;
@@ -46,11 +42,14 @@ button {
   height: 4rem;
   background-color: rgb(41, 40, 41);
   width: 255px;
-  margin-bottom: 0;
+  margin: 0;
+}
+
+.orange {
+  background-color: rgb(259, 155, 11);
 }
 
 .gray {
-  color: greenyellow;
   background-color: rgb(61, 60, 61);
 }
 
@@ -67,5 +66,11 @@ button {
 .orange:active {
   outline: none;
   background-color: rgb(259, 155, 11);
+  transform: translateY(4px);
+}
+
+.gray:active {
+  outline: none;
+  background-color: rgb(61, 60, 61);
   transform: translateY(4px);
 }

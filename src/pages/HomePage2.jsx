@@ -28,7 +28,6 @@ const Calculator = () => {
 
   const getResult = operand => {
     let total = runningTotal
-    console.log({ total, display, operand })
     switch (operand) {
       case '+':
         total += parseInt(display)
@@ -54,7 +53,7 @@ const Calculator = () => {
 
   const clear = () => {
     setOperand('')
-    setFirstNumber(0)
+    setFirstNumber('')
     setDisplay('')
   }
 
@@ -65,15 +64,9 @@ const Calculator = () => {
           <p className="output">{display}</p>
         </section>
         <section>
-          <button className="gray" disabled="true">
-            S
-          </button>
-          <button className="gray" disabled="true">
-            D
-          </button>
-          <button className="gray" disabled="true">
-            G
-          </button>
+          <button className="gray">S</button>
+          <button className="gray">D</button>
+          <button className="gray">G</button>
           <button className="orange" onClick={() => operandButtonPressed('/')}>
             ÷
           </button>
