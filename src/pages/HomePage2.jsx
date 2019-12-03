@@ -5,36 +5,49 @@ const Calculator = () => {
   const [operand, setOperand] = useState('')
   const [firstNumber, setFirstNumber] = useState(0)
   const [runningTotal, setRunningTotal] = useState(0)
+  const [clearOnNextClick, setClearOnNextClick] = useState(false)
 
   const numberButtonPressed = digit => {
     setDisplay(prevValue => {
-      return prevValue + digit.toString()
+      if (clearOnNextClick) {
+        setClearOnNextClick(false)
+        return digit.toString()
+      } else {
+        return prevValue + digit.toString()
+      }
     })
   }
 
   const operandButtonPressed = op => {
     setOperand(op)
     setFirstNumber(display)
-    setDisplay('')
-    calculateResult()
+    setClearOnNextClick(true)
+    const rt = getResult(op)
+    setRunningTotal(rt)
+  }
+
+  const getResult = operand => {
+    let total = runningTotal
+    console.log({ total, display, operand })
+    switch (operand) {
+      case '+':
+        total += parseInt(display)
+        break
+      case '-':
+        total -= parseInt(display)
+        break
+      case '*':
+        total *= parseInt(display)
+        break
+      case '/':
+        total /= parseInt(display)
+        break
+    }
+    return total
   }
 
   const calculateResult = () => {
-    let total = 0
-    switch (operand) {
-      case '+':
-        total = parseInt(firstNumber) + parseInt(display)
-        break
-      case '-':
-        total = parseInt(firstNumber) - parseInt(display)
-        break
-      case '*':
-        total = parseInt(firstNumber) * parseInt(display)
-        break
-      case '/':
-        total = parseInt(firstNumber) / parseInt(display)
-        break
-    }
+    let total = getResult(operand)
     setDisplay(total)
     setRunningTotal(total)
   }
@@ -52,9 +65,15 @@ const Calculator = () => {
           <p className="output">{display}</p>
         </section>
         <section>
-          <button className="gray" disabled="true"></button>
-          <button className="gray" disabled="true"></button>
-          <button className="gray" disabled="true"></button>
+          <button className="gray" disabled="true">
+            S
+          </button>
+          <button className="gray" disabled="true">
+            D
+          </button>
+          <button className="gray" disabled="true">
+            G
+          </button>
           <button className="orange" onClick={() => operandButtonPressed('/')}>
             ÷
           </button>

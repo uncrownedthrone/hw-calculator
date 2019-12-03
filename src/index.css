@@ -32,12 +32,6 @@ button {
   cursor: pointer;
 }
 
-button:active {
-  outline: none;
-  background-color: rgb(93, 92, 93);
-  transform: translateY(4px);
-}
-
 .orange {
   background-color: rgb(259, 155, 11);
 }
@@ -56,10 +50,22 @@ button:active {
 }
 
 .gray {
-  color: black;
+  color: greenyellow;
   background-color: rgb(61, 60, 61);
 }
 
 .darkgray {
   background-color: rgb(93, 92, 93);
+}
+
+.darkgray:active {
+  outline: none;
+  background-color: rgb(93, 92, 93);
+  transform: translateY(4px);
+}
+
+.orange:active {
+  outline: none;
+  background-color: rgb(259, 155, 11);
+  transform: translateY(4px);
 }
